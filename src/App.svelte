@@ -16,7 +16,7 @@
   function handleChange(menu) {
     console.log(menu);
     switch (menu[0]) {
-      case 'Band Count':
+      case '你要幾色環':
         // update to defaults if band count is changed
         if (bandCount > 3 && menu[1] == 3) {
           tolerance = 1;
@@ -32,22 +32,22 @@
 
         bandCount = menu[1];
         break;
-        case '1st Digit':
+        case '第一色環':
         digits[0] = menu[1].toString();
         break;
-      case '2nd Digit':
+      case '第二色環':
         digits[1] = menu[1].toString();
         break;
-      case '3rd Digit':
+      case '第三色環':
         digits[2] = menu[1].toString();
         break;
-      case 'Multiplier':
+      case '相乘倍數':
         multiplier = menu[1];
         break;
-      case 'Tolerance':
+      case '誤差值':
         tolerance = menu[1];
         break;
-      case 'Temp. Coeff.':
+      case '溫度係數':
         tempcoeff = menu[1];
         break;
     }
@@ -59,7 +59,7 @@
 
   async function copyText() {
     await navigator.clipboard.writeText(result);
-    alert('Copied result to clipboard!');
+    alert('複製電阻資訊成功!');
   }
 </script>
 
@@ -74,89 +74,89 @@
   {#key resetDropdowns}
     <div class="dropdowns">
       <Dropdown on:selectChange={(e) => handleChange(e.detail)} data={[
-        [3, '3 Bands'],
-        [4, '4 Bands'],
-        [5, '5 Bands'],
-        [6, '6 Bands'],
-      ]} name="Band Count" />
+        [3, '三色環'],
+        [4, '四色環'],
+        [5, '五色環'],
+        [6, '六色環'],
+      ]} name="你要幾色環" />
 
       <Dropdown on:selectChange={(e) => handleChange(e.detail)} data={[
-        [1, 'Brown', '#8C4D19'],
-        [2, 'Red', '#DE4439'],
-        [3, 'Orange', '#EF8228'],
-        [4, 'Yellow', '#FCD500'],
-        [5, 'Green', '#53C638'],
-        [6, 'Blue', '#1A94D0'],
-        [7, 'Purple', '#7E43B1'],
-        [8, 'Grey', '#999999'],
-        [9, 'White', '#FFFFFF'],
-      ]} name="1st Digit" />
+        [1, '棕色', '#8C4D19'],
+        [2, '紅色', '#DE4439'],
+        [3, '橙色', '#EF8228'],
+        [4, '黃色', '#FCD500'],
+        [5, '綠色', '#53C638'],
+        [6, '藍色', '#1A94D0'],
+        [7, '紫色', '#7E43B1'],
+        [8, '灰色', '#999999'],
+        [9, '白色', '#FFFFFF'],
+      ]} name="第一色環" />
       
       <Dropdown on:selectChange={(e) => handleChange(e.detail)} data={[
-        [0, 'Black', '#000000'],
-        [1, 'Brown', '#8C4D19'],
-        [2, 'Red', '#DE4439'],
-        [3, 'Orange', '#EF8228'],
-        [4, 'Yellow', '#FCD500'],
-        [5, 'Green', '#53C638'],
-        [6, 'Blue', '#1A94D0'],
-        [7, 'Purple', '#7E43B1'],
-        [8, 'Grey', '#999999'],
-        [9, 'White', '#FFFFFF'],
-      ]} name="2nd Digit" />
+        [0, '黑色', '#000000'],
+        [1, '棕色', '#8C4D19'],
+        [2, '紅色', '#DE4439'],
+        [3, '橘色', '#EF8228'],
+        [4, '黃色', '#FCD500'],
+        [5, '綠色', '#53C638'],
+        [6, '藍色', '#1A94D0'],
+        [7, '紫色', '#7E43B1'],
+        [8, '灰色', '#999999'],
+        [9, '白色', '#FFFFFF'],
+      ]} name="第二色環" />
 
       {#if bandCount >= 5}
         <Dropdown on:selectChange={(e) => handleChange(e.detail)} data={[
-          [0, 'Black', '#000000'],
-          [1, 'Brown', '#8C4D19'],
-          [2, 'Red', '#DE4439'],
-          [3, 'Orange', '#EF8228'],
-          [4, 'Yellow', '#FCD500'],
-          [5, 'Green', '#53C638'],
-          [6, 'Blue', '#1A94D0'],
-          [7, 'Purple', '#7E43B1'],
-          [8, 'Grey', '#999999'],
-          [9, 'White', '#FFFFFF'],
-        ]} name="3rd Digit" />
+          [0, '黑色', '#000000'],
+          [1, '棕色', '#8C4D19'],
+          [2, '紅色', '#DE4439'],
+          [3, '橙色', '#EF8228'],
+          [4, '黃色', '#FCD500'],
+          [5, '綠色', '#53C638'],
+          [6, '藍色', '#1A94D0'],
+          [7, '紫色', '#7E43B1'],
+          [8, '灰色', '#999999'],
+          [9, '白色', '#FFFFFF'],
+        ]} name="第三色環" />
       {/if}
       
       <Dropdown on:selectChange={(e) => handleChange(e.detail)} data={[
-        [1, 'Black', '#000000'],
-        [10, 'Brown', '#8C4D19'],
-        [100, 'Red', '#DE4439'],
-        [1000, 'Orange', '#EF8228'],
-        [10000, 'Yellow', '#FCD500'],
-        [100000, 'Green', '#53C638'],
-        [1000000, 'Blue', '#1A94D0'],
-        [10000000, 'Purple', '#7E43B1'],
-        [100000000, 'Grey', '#999999'],
-        [1000000000, 'White', '#FFFFFF'],
-        [0.1, 'Gold', '#FFB800'],
-        [0.01, 'Silver', '#DCDCDC']
-      ]} name="Multiplier" />
+        [1, '黑色', '#000000'],
+        [10, '棕色', '#8C4D19'],
+        [100, '紅色', '#DE4439'],
+        [1000, '橙色', '#EF8228'],
+        [10000, '黃色', '#FCD500'],
+        [100000, '綠色', '#53C638'],
+        [1000000, '藍色', '#1A94D0'],
+        [10000000, '紫色', '#7E43B1'],
+        [100000000, '灰色', '#999999'],
+        [1000000000, '白色', '#FFFFFF'],
+        [0.1, '金色', '#FFB800'],
+        [0.01, '銀色', '#DCDCDC']
+      ]} name="相乘倍數" />
 
       {#if bandCount >= 4}
         <Dropdown on:selectChange={(e) => handleChange(e.detail)} data={[
-          [1, 'Brown', '#8C4D19'],
-          [2, 'Red', '#DE4439'],
-          [0.5, 'Green', '#53C638'],
-          [0.25, 'Blue', '#1A94D0'],
-          [0.10, 'Purple', '#7E43B1'],
-          [0.05, 'Grey', '#999999'],
-          [5, 'Gold', '#FFB800'],
-          [10, 'Silver', '#DCDCDC']
-        ]} name="Tolerance" />
+          [1, '棕色', '#8C4D19'],
+          [2, '紅色', '#DE4439'],
+          [0.5, '綠色', '#53C638'],
+          [0.25, '藍色', '#1A94D0'],
+          [0.10, '紫色', '#7E43B1'],
+          [0.05, '灰色', '#999999'],
+          [5, '金色', '#FFB800'],
+          [10, '銀色', '#DCDCDC']
+        ]} name="誤差值" />
       {/if}
 
       {#if bandCount == 6}
         <Dropdown on:selectChange={(e) => handleChange(e.detail)} data={[
-          [100, 'Brown', '#8C4D19'],
-          [50, 'Red', '#DE4439'],
-          [15, 'Orange', '#EF8228'],
-          [25, 'Yellow', '#FCD500'],
-          [10, 'Blue', '#1A94D0'],
-          [5, 'Purple', '#7E43B1'],
-        ]} name="Temp. Coeff." />
+          [100, '棕色', '#8C4D19'],
+          [50, '紅色', '#DE4439'],
+          [15, '橙色', '#EF8228'],
+          [25, '黃色', '#FCD500'],
+          [10, '藍色', '#1A94D0'],
+          [5, '紫色', '#7E43B1'],
+        ]} name="溫度係數" />
       {/if}
     </div>
   {/key}
