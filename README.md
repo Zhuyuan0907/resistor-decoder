@@ -2,7 +2,7 @@
 
 A tiny web app made in Svelte and Vite that decodes your resistors.
 
-<https://elektr1x.github.io/resistor-decoder>
+<https://江竺源是甲.gay>
 
 ![demo](demo.gif)
 
